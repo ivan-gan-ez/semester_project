@@ -68,17 +68,11 @@ $database = connectToDB();
                       ><i class="bi bi-key"></i
                     ></a>
 
+                    <?php if (isOwner() && $user['user_id'] !== $_SESSION['user']['user_id'] || !isOwner() && isAdmin() && $user['role'] === "user" ) {?>
                     <!-- Button trigger modal -->
                     <button
                       type="button"
-                      class="btn btn-danger btn-sm <?php
-                        if (isOwner() && $user['user_id'] === $_SESSION['user']['user_id']) {
-                          echo "disabled";
-                        } else if (!isOwner() && isAdmin() && $user['role'] !== "user") {
-                          echo "disabled";
-                        }
-                      ?>"
-                      data-bs-toggle="modal"
+                      class="btn btn-danger btn-sm" data-bs-toggle="modal"
                       data-bs-target="#userDeleteModal-<?= $user["user_id"]?>"
                     >
                       <i class="bi bi-trash"></i>
@@ -137,6 +131,7 @@ $database = connectToDB();
                     </div>
 
                     <!-- Modal end -->
+                    <?php }?>
                   </div>
                 </td>
               </tr>
