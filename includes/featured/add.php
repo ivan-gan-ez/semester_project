@@ -3,7 +3,7 @@
 
     $number = $_POST["number"];
 
-    if ( empty($number) ){
+    if ( empty($number) && $number != 0 ){
         $_SESSION["error"] = "Number must not be empty.";
         header("Location: /");  
         exit;
@@ -11,6 +11,21 @@
 
     if ( !is_numeric($number) or str_contains($number, "e") ){
         $_SESSION["error"] = "Not an integer.";
+        header("Location: /");  
+        exit;
+    };
+
+    //if number doesn't exist in pages database then we add it because we don't want foreign keys to implode
+    $sql = "SELECT * FROM featured WHERE number = :number";
+
+    $query = $database->prepare($sql);
+
+    $query->execute(["number" => $number]);
+
+    $fnumber = $query->fetch();
+
+    if ( $fnumber ){
+        $_SESSION["error"] = "Already featured.";
         header("Location: /");  
         exit;
     };

@@ -38,7 +38,7 @@ $numbers = $query->fetchAll();
         <h1 class="text-light my-4">Featured Numbers</h1>
         <?php if ( isAdmin() ) {?>
           <form method="POST" action="/auth/featured/add" class="d-flex mb-4" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search for a number..." aria-label="Search" name="number"/>
+            <input class="form-control me-2" type="search" placeholder="Like a number? Put it on the front page!" aria-label="Search" name="number"/>
             <button class="btn btn-success" type="submit">Search</button>
           </form>
         <?php }?>

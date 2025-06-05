@@ -55,11 +55,12 @@ $database = connectToDB();
                 </td>
 
                 <td class="text-end">
-                  <div class="buttons" style="min-width: 135px">
+                  <div class="buttons" style="min-width: 170px">
                     <a href="/userpage?id=<?= $user["user_id"];?>" class="btn btn-primary btn-sm me-2"
                       ><i class="bi bi-eye"></i
                     ></a>
 
+                    <?php if (isOwner() || !isOwner() && isAdmin() && $user['role'] !== "owner") {?>
                     <a href="/user/edit?id=<?= $user["user_id"];?>" class="btn btn-success btn-sm me-2"
                       ><i class="bi bi-pencil"></i
                     ></a>
@@ -131,6 +132,7 @@ $database = connectToDB();
                     </div>
 
                     <!-- Modal end -->
+                    <?php }?>
                     <?php }?>
                   </div>
                 </td>

@@ -73,13 +73,10 @@ $erole = $euser["role"];
             <div class="mb-3">
               
               <?php if ( isOwner() ) {?>
-                <label for="role" class="form-label">Role</label>
                 <?php if ( $erole === "owner" ) {?>
-                  <select class="form-control" id="role" name="role" <?php echo ( $erole === "owner" ? "disabled" : "" ); ?>>
-                  <option value="owner" <?php echo ( $erole === "owner" ? "selected" : "" ); ?> hidden >Owner</option>
-                  </select>
                   <input type="hidden" name="role" value="owner"></input>
                 <?php } else {?>
+                  <label for="role" class="form-label">Role</label>
                   <select class="form-control" id="role" name="role" <?php echo ( $erole === "owner" ? "disabled" : "" ); ?>>
                   <option value="user" <?php echo ( $erole === "user" ? "selected" : "" ); ?> >User</option>
                   <option value="admin" <?php echo ( $erole === "admin" ? "selected" : "" ); ?> >Admin</option>
