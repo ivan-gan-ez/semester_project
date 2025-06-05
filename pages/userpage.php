@@ -71,8 +71,10 @@ if ( isset($_SESSION["user"]["user_id"]) ) {
         <!-- comments section start -->
             <h1 class="text-light my-4">Comments</h1>
     
+            <?php if ( isUser() ) {?>
             <a href="/user/comment/add?id=<?= $vid?>" class="btn btn-success w-100 mb-2">Add New Comment</a>
-    
+            <?php };?>
+
             <?php foreach ($comments as $i => $comment) {?>
               
             <div class="card my-4 p-4">

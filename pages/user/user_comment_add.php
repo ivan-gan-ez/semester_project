@@ -1,5 +1,10 @@
 <?php
 
+if ( !isUser() ){
+  header("Location: /");
+  exit;
+};
+
 $userpage = $_GET["id"]
 
 ?>

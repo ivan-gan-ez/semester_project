@@ -8,6 +8,7 @@ if ( !isUser() ){
 $number = $_GET["number"]
 
 ?>
+
 <?php require "parts/header.php"?>
 
     <div class="hero">
