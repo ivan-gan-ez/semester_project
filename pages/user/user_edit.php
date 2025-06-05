@@ -17,6 +17,11 @@ $query->execute(["id" => $id]);
 
 $euser = $query->fetch();
 
+if ( !$euser ){
+  header("Location: /user/manage");
+  exit;
+};
+
 $ename = $euser["name"];
 $efav_num = $euser["fav_num"];
 $epfp = $euser["profile_picture"];

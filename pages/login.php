@@ -1,3 +1,12 @@
+<?php
+
+if ( isUser() ){
+  header("Location: /");
+  exit;
+};
+
+?>
+
 <?php require "parts/header.php"?>
 
     <div class="hero">

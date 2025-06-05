@@ -71,7 +71,13 @@ $database = connectToDB();
                     <!-- Button trigger modal -->
                     <button
                       type="button"
-                      class="btn btn-danger btn-sm"
+                      class="btn btn-danger btn-sm <?php
+                        if (isOwner() && $user['user_id'] === $_SESSION['user']['user_id']) {
+                          echo "disabled";
+                        } else if (!isOwner() && isAdmin() && $user['role'] !== "user") {
+                          echo "disabled";
+                        }
+                      ?>"
                       data-bs-toggle="modal"
                       data-bs-target="#userDeleteModal-<?= $user["user_id"]?>"
                     >

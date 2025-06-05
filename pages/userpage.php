@@ -12,6 +12,11 @@ $database = connectToDB();
 
     $user = $query->fetch();
 
+if ( !$user ){
+  header("Location: /");
+  exit;
+};
+
 $vid = $user["user_id"];
 $vname = $user["name"];
 $vfav_num = $user["fav_num"];

@@ -9,6 +9,19 @@ if ( !isAdmin() && $_SESSION["user"]["user_id"] != $id ){
 
 $database = connectToDB();
 
+$sql = "SELECT * FROM users WHERE user_id = :id";
+
+$query = $database->prepare($sql);
+
+$query->execute(["id" => $id]);
+
+$euser = $query->fetch();
+
+if ( !$euser ){
+  header("Location: /user/manage");
+  exit;
+};
+
 ?>
 
 <?php require "parts/header.php"?>
